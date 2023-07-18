@@ -300,18 +300,6 @@ class ExamUserShipAdmin(ExportMixin, admin.ModelAdmin):
   examed_name.short_description = '受験者名'
   resource_class = ExamUserShipResource
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
-
-  def get_queryset(self, request):
-    queryset = super().get_queryset(request)
-    return queryset.filter(deleted__isnull=True).all()
-
-  def delete_queryset(self, request, queryset):
-    for obj in queryset:
-      obj.deleted = timezone.now()
-      obj.save()
 
 
 
@@ -334,21 +322,8 @@ class ElmsChapterUserShipAdmin(ExportMixin, admin.ModelAdmin):
     return False
   def has_change_permission(self, request, obj=None):
     return False
-
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
-
-  def get_queryset(self, request):
-    queryset = super().get_queryset(request)
-    return queryset.filter(deleted__isnull=True).all()
-
-  def delete_queryset(self, request, queryset):
-    for obj in queryset:
-      obj.deleted = timezone.now()
-      obj.save()
-
-
+  def has_delete_permission(self, request, obj=None):
+    return False
 
   def elms_chapter_title(self, obj):
     return obj.chapter.chapter_title
@@ -388,20 +363,8 @@ class ElmsLessonUserShipAdmin(ExportMixin, admin.ModelAdmin):
     return False
   def has_change_permission(self, request, obj=None):
     return False
-
-
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
-
-  def get_queryset(self, request):
-    queryset = super().get_queryset(request)
-    return queryset.filter(deleted__isnull=True).all()
-
-  def delete_queryset(self, request, queryset):
-    for obj in queryset:
-      obj.deleted = timezone.now()
-      obj.save()
+  def has_delete_permission(self, request, obj=None):
+    return False
 
   def elms_lesson_title(self, obj):
     return obj.lesson.title
