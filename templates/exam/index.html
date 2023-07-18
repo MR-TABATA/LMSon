@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load utility %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | 理解度問題{% endblock %}
+{% block content %}
+<h5 class="pb-4 mb-4 fst border-bottom">{{ chapter.chapter_title }} 理解問題</h5>
+
+<form action="{% url 'exam:correct' chapter.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="first" value="{{ exam_first.id }}">
+  <input type="hidden" name="last" value="{{ exam_last.id }}">
+  <ol>
+    {% for exam in examinations %}
+      <li>{{ exam.body|safe }}</li>
+      <ul class="mb-5">
+        {% for opt in exam.options|split:'|' %}
+          <li class="list-unstyled mb-2">
+            <div class="form-check">
+              <input type="radio" name="exam{{ exam.id }}" value="{{ forloop.counter }}" id="exam{{ exam.id }}{{ forloop.counter }}">
+              <label class="form-check-label" for="exam{{ exam.id }}{{ forloop.counter }}"> {{ opt }}</label>
+            </div>
+          </li>
+        {%  endfor %}
+      </ul>
+    {%  endfor %}
+  </ol>
+  <div class="row">
+    <div class="col"> <input type="submit" class="btn btn-outline-success w-50" value="解答する"></div>
+  </div>
+</form>
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

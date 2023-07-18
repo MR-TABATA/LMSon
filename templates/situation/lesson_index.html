@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | 受講状況{% endblock %}
+{% block content %}
+<h5 class="pb-4 mb-4 fst border-bottom">{{ SITE_NAME }} 受講状況</h5>
+{% for course in courses %}
+  <blockquote class="blockquote">
+    <p>第 {{ forloop.counter }} 章　{{ course.title }}</p>
+  </blockquote>
+  <ol>
+    {% for chapter in chapters %}
+      {%  if course.id == chapter.elms_chapter_course_id %}
+        <li class="mt-3 mb-2">{{ chapter.chapter_title }}</li>
+        {% for lesson in lessons %}
+          {%  if chapter.id == lesson.elms_lesson_chapter_id %}
+            <div class="row py-1">
+              <div class="col-6"> <a href="{% url 'lesson:index' lesson.pk %}" class="text-decoration-none">{{ lesson.title }}</a></div>
+              {% for lesson_user in lesson_users %}
+                {% if lesson_user.lesson_id == lesson.pk and lesson_user.comprehension %}
+                  <div class="col-4">{{ lesson_user.get_comprehension_display }}</div>
+                  <div class="col">{{ lesson_user.created|date:"Y-m-d" }}</div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </ol>
+{% endfor %}
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

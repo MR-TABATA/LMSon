@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | {{ lesson.title }}{% endblock %}
+{% block content %}
+<h5 class="pb-4 mb-4 fst border-bottom">{{ lesson.title }}</h5>
+{{ lesson.content|safe }}
+<hr />
+{% if lesson_user.comprehension %}
+  あなたの理解度は、{{ lesson_user.get_comprehension_display }}、でした
+{% else %}
+  <form name="comprehension" action="{% url 'lesson:history' lesson.pk %}" method="GET">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-8">{% bootstrap_form form %}</div>
+    <div class="col-4"><input type="submit" name="submit" value="送信する" class="btn btn-primary w-100"></div>
+  </div>
+  </form>
+{% endif %}
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,19 @@
+{% load static %}
+<div class="position-sticky" style="top: 2rem;">
+  <div class="px-4 py-2">
+    <p>{{ user.email }}</p>
+    <h5 class="mi-m"><i class="fa-sharp fa-solid fa-chalkboard"></i>MyLMS</h5>
+    <p class="ms-3"><a href="{% url 'situation:lesson_index' %}" class="text-decoration-none">受講確認</a></p>
+    <p class="ms-3"><a href="{% url 'situation:examination_index' %}" class="text-decoration-none">受験確認</a></p>
+  </div>
+  <div class="px-4 py-2">
+    <h5 class="mi-m"><i class="fa-solid fa-user-lock"></i>コンテンツ</h5>
+    <p class="ms-3"><a href="{% url 'chapter:index' %}" class="text-decoration-none">カリキュラム</a></p>
+  </div>
+  <div class="px-4 py-2">
+    <h5 class="mi-m"><i class="fa-regular fa-message"></i>お知らせ</h5>
+    {% for notification in notifications %}
+      <p class="ms-3"><a href="{% url 'notification:detail' notification.pk %}" class="text-decoration-none">{{ notification.title|truncatechars:'15' }}</a></p>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{% extends "base_sign.html" %}
+{% load django_bootstrap5 %}
+{% block bootstrap5_extra_head %}
+<style>
+  .p-i {
+      text-indent: 1em;
+      line-height: 1.7;
+  }
+</style>
+{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | Home{% endblock %}
+{% block content %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  {% include 'home_header.html' %}
+  <main>
+    <h3 class="mb-3">セキュリティコンテンツとラーニングシステム</h3>
+    <p class="fs-5 p-i">
+    私たちのラーニングシステムでは、多様なトピックや学習レベルに合わせて、優れたコンテンツが豊富に揃っています。これにより、学習者は自身の興味や目標に合わせたカリキュラムを選択し、自分のペースで学習を進めることができます。
+    </p>
+    <p class="fs-5 p-i">
+      また、私たちのラーニングシステムは使いやすさと柔軟性にも重点を置いています。直感的なインターフェースとユーザーフレンドリーな機能により、学習者はシームレスな体験を享受できます。さらに、モバイルデバイスやパソコンなど、さまざまなプラットフォームで利用することができるため、場所や時間に制約されずに学習を続けることができます。
+    </p>
+    <p class="fs-5 p-i">
+      私たちのラーニングシステムは、コンテンツとシステムのマッチングにより、効果的で効率的な学習環境を提供します。学習者の成果を最大化し、個々の学習ニーズに合わせたカスタマイズされた学習経験を実現するために、ぜひ私たちのシステムをご利用ください。
+    </p>
+    <div class="mb-6">
+      <a href="{% url 'accounts:signin' %}" class="btn btn-outline-primary btn-lg px-4 mt-2 w-50" target="_blank">Demo</a>
+    </div>
+  </main>
+  {% include 'footer.html' %}
+</div>
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

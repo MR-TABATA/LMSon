@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | お知らせ一覧{% endblock %}
+{% block content %}
+<h5 class="pb-4 mb-4 fst border-bottom">{{ detail.title }}</h5>
+<p class="text-muted mb-0 text-end">{{ detail.created|date:'Y-m-d H:i:s' }}</p>
+<p>{{ detail.content|linebreaks }}</p>
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

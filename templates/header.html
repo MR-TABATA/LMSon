@@ -1,0 +1,21 @@
+<header class="blog-header">
+  <div class="row flex-nowrap align-items-center">
+    <div class="col-8">
+      <h2 class="fst mi-l mb-5"><i class="fa-solid fa-user-lock"></i>{{ SITE_NAME }}</h2>
+    </div>
+    <div class="col-4">
+      <div class="dropdown px-5">
+        <a class="" href="#" role="" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{% url 'accounts:media' %}" style="width:64px;height:auto;">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-versions">
+          <li class="list-group-item"><a href="{% url 'accounts:profile_detail' %}" class="text-decoration-none dropdown-item" rel="noopener norefferrer">プロフィール</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li class="list-group-item"><a href="{% url 'accounts:password_modify' %}" class="text-decoration-none dropdown-item" rel="noopener norefferrer">パスワード変更</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li class="list-group-item"><a href="{% url 'accounts:signout' %}" class="text-decoration-none dropdown-item" rel="noopener norefferrer">サインアウト</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

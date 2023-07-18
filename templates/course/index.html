@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} コース {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst border-bottom">ELMS on Security</h3>
+      {% for record in object_list %}
+        <blockquote class="blockquote">
+          <p><a href="{% url 'chapter:index' record.pk %}">{{ record.title }}</a></p>
+        </blockquote>
+
+      {% endfor %}
+    </div>
+    <div class="col-md-4">
+      {% include 'right_sidebar.html' %}
+    </div>
+  </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

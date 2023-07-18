@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load utility %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | 理解度問題 結果{% endblock %}
+{% block content %}
+<h5 class="pb-4 mb-4 fst border-bottom">{{ chapter.chapter_title }} 理解度問題 結果</h5>
+{% for result in results.all %}
+  <h6 class="mi-m">{{ result.exam.body }}</h6>
+  <div class="row mb-3">
+    <div class="col">正解</div>
+    <div class="col">貴方の解答</div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      {% for opt in result.exam.options|split:'|' %}
+      <p>
+        {% if result.exam.correct == forloop.counter %}
+          <b><i class="bi bi-circle"></i>{{ opt }}</b>
+        {% else %}
+          <i class="bi bi-x"></i>{{ opt }}
+        {% endif %}
+      </p>
+      {%  endfor %}
+    </div>
+    <div class="col">
+      {% for opt in result.exam.options|split:'|' %}
+        {% if result.answer == forloop.counter %}
+          {% if result.exam.correct == forloop.counter %}<i class="bi bi-circle"></i>{% else %}<i class="bi bi-x"></i>{% endif %}{{ opt }}
+        {% endif %}
+      {%  endfor %}
+    </div>
+  </div>
+{% endfor %}
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,95 @@
+{% extends "base_sign.html" %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | 機能概要{% endblock %}
+{% block bootstrap5_extra_head %}
+<style>
+  .p-i {
+      text-indent: 1em;
+      line-height: 1.7;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  {% include 'home_header.html' %}
+  <main>
+    <h3 class="mb-3">機能概要</h3>
+    <div class="card mb-3">
+      <h5 class="card-header">{{ SITE_NAME }}の特徴</h5>
+      <div class="card-body">
+        <h5 class="card-title">コンテンツとアプリの一体化</h5>
+        <p class="card-text">私たちのコンテンツとWebアプリが一体化したシステムは、無駄を省き、シンプルなつくりであることが特徴です。当社のシステムは、必要最低限の機能のみを実装しており、使いやすさと効率性を追求しています。
+
+シンプルなインターフェースと直感的な操作により、ユーザーは簡単にコンテンツを作成、編集、管理することができます。余分な機能や複雑な手順は排除されており、ユーザーはストレスなくシステムを利用できます。
+
+また、当社のシステムは拡張性に優れています。新しい機能やモジュールを追加するための柔軟なアーキテクチャが採用されており、将来的なビジネスの成長や要件の変更に対応することができます。必要に応じて、新しいコンテンツタイプや機能を追加してシステムをカスタマイズすることも可能です。
+
+私たちのシステムでは、コンテンツの追加も簡単です。ユーザーは安易にコンテンツを追加でき、システムの柔軟性を活かして自由にコンテンツを増やすことができます。さまざまなメディア形式やテンプレートをサポートしており、ビジュアルな表現や情報の多様性を実現します。
+
+私たちのコンテンツとWebアプリが一体化したシステムは、シンプルで効率的なコンテンツ管理と柔軟な拡張性を備えています。ユーザーは手間をかけることなくコンテンツを追加し、ビジネスの成果を最大化することができます。私たちのシステムを利用して、魅力的なコンテンツを簡単に作成し、オンラインプレゼンスを強化しましょう。</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <div class="card">
+          <h5 class="card-header">認証・認可</h5>
+          <div class="card-body">
+            <h5 class="card-title">受講・受験記録</h5>
+            <p class="card-text">あなたの受講・受験記録・結果はあなたと管理者しか見られません</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h5 class="card-header">管理サイト</h5>
+          <div class="card-body">
+            <h5 class="card-title">管理者</h5>
+            <p class="card-text">Djangoの管理機能をカスタマイズし、一括ユーザー登録も可能</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h5 class="card-header">プロフィール</h5>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mb-3">
+      <div class="col-4">
+        <div class="card">
+          <h5 class="card-header">コンテンツ</h5>
+          <div class="card-body">
+            <h5 class="card-title">ユーザー認証</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h5 class="card-header">受講</h5>
+          <div class="card-body">
+            <h5 class="card-title">91講義・100問</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <h5 class="card-header">受験</h5>
+          <div class="card-body">
+            <h5 class="card-title">閲覧・更新</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  {% include 'footer.html' %}
+</div>
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}

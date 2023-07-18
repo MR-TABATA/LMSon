@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | お知らせ一覧{% endblock %}
+{% block content %}
+<h5 class="pb-4 mb-4 fst border-bottom">{{ SITE_NAME }} お知らせ</h5>
+{% for record in object_list %}
+  <div class="row">
+    <div class="col-3"><p>{{ record.created|date:'Y-m-d H:i:s' }}</p></div>
+    <div class="col"><p><a href="{% url 'notification:detail' record.pk %}" class="text-start text-decoration-none">{{ record.title|truncatechars:'30' }}</a></p></div>
+  </div>
+{% endfor %}
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}
