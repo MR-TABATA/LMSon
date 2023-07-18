@@ -10,22 +10,140 @@
 {% endblock %}
 {% block bootstrap5_title %}{{ SITE_NAME }} | Home{% endblock %}
 {% block content %}
-<div class="col-lg-8 mx-auto p-3 py-md-5">
+<div class="col-lg-10 mx-auto p-3 py-md-5">
   {% include 'home_header.html' %}
   <main>
-    <h3 class="mb-3">セキュリティコンテンツとラーニングシステム</h3>
+    <h1 class="mb-3 text-center pb-3">LMSon</h1>
     <p class="fs-5 p-i">
-    私たちのラーニングシステムでは、多様なトピックや学習レベルに合わせて、優れたコンテンツが豊富に揃っています。これにより、学習者は自身の興味や目標に合わせたカリキュラムを選択し、自分のペースで学習を進めることができます。
+      私たちのWebアプリ（LMS on, LMS on Lesson, LMS on Examination）は、無駄を省き、シンプルなつくりであることが特徴で、必要最低限の機能のみを実装しており、使いやすさと効率性を追求しています。
     </p>
     <p class="fs-5 p-i">
-      また、私たちのラーニングシステムは使いやすさと柔軟性にも重点を置いています。直感的なインターフェースとユーザーフレンドリーな機能により、学習者はシームレスな体験を享受できます。さらに、モバイルデバイスやパソコンなど、さまざまなプラットフォームで利用することができるため、場所や時間に制約されずに学習を続けることができます。
+      シンプルなインターフェースと直感的な操作により、管理者は簡単にコンテンツを作成、編集、管理することが可能です。余分な機能や複雑な手順は排除されており、管理者はストレスなくWebアプリを利用できます。
     </p>
     <p class="fs-5 p-i">
-      私たちのラーニングシステムは、コンテンツとシステムのマッチングにより、効果的で効率的な学習環境を提供します。学習者の成果を最大化し、個々の学習ニーズに合わせたカスタマイズされた学習経験を実現するために、ぜひ私たちのシステムをご利用ください。
+      また、当社のWebアプリは拡張性に優れています。新しい機能やモジュールを追加するための柔軟なアーキテクチャが採用されており、将来的なビジネスの成長や要件の変更に対応することが可能で。必要に応じて、新しいコンテンツタイプや機能を追加してWebアプリをカスタマイズすることも可能です。
     </p>
-    <div class="mb-6">
-      <a href="{% url 'accounts:signin' %}" class="btn btn-outline-primary btn-lg px-4 mt-2 w-50" target="_blank">Demo</a>
+    <p class="fs-5 p-i">
+      私たちのWebアプリを利用して、魅力的なコンテンツを簡単に作成し、オンラインプレゼンスを強化しましょう。
+    </p>
+    <hr class="p-i mt-5 mb-5">
+
+    <h1 class="mb-3 text-center pb-3">お知らせ</h1>
+    {% for record in object_list %}
+      <div class="row">
+        <div class="col-3"><p>{{ record.created|date:'Y-m-d H:i:s' }}</p></div>
+        <div class="col"><p><a href="#collapseNotice{{ record.pk }}" class="text-start text-decoration-none" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseNotice{{ record.pk }}">{{ record.title|truncatechars:'50' }}</a></p></div>
+      </div>
+      <div class="collapse" id="collapseNotice{{ record.pk }}">
+        <div class="card card-body">
+        {{ record.content|linebreaks }}
+        </div>
+      </div>
+    {% endfor %}
+    <hr class="p-i mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">シンプルな構造</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-start p-i">
+              単元/章/講義、単元/章/試験と構造がシンプルで、非常にわかりやすい仕組みになっています、
+              シンプルゆえ、社員研修のプラットホーム、等にも最適です<br />
+              また、管理機能はDjangoの標準機能を採用しているので、わかりやすく、直感的な操作を提供します
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Bootstrap5/Google Font</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-start p-i">
+              CSSフレームワークにはBootstrap5採用していますので、PC・タブレット・スマホとあらゆるデバイスに対して最適なレイアウトを提供します、<br />
+              また、フォントはGoogle Fontを採用していますので、どのデバイスでも同じように表示されます
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">MITライセンス</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text text-start p-i">
+              ライセンスは非常に制限がゆるいMITライセンスを採用しています、<br />
+              ソフトウェアを自由に扱ってよいこと、再頒布時に著作権表示とライセンス表示を含めること、作者や著作権者はいかなる責任も負わないことがMITライセンスの特徴です
+              （<a href="https://licenses.opensource.jp/MIT/MIT.html" target="_blank">MITライセンス条文</a>）
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <hr class="p-i mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">LMS on</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">¥0</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>講義・試験</li>
+              <li>MITライセンス</li>
+              <li>Non Help</li>
+              <li>Non Support</li>
+            </ul>
+            <p><a href="#" button type="button" class="w-100 btn btn-lg btn-outline-primary" target="_New">Coming Soon</a></p>
+            <p><a href="{% url 'accounts:signin' %}" button type="button" class="w-100 btn btn-lg btn-outline-primary" target="_blank">demo</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">LMS on Lesson</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">¥0</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>講義のみ</li>
+              <li>MITライセンス</li>
+              <li>Non Help</li>
+              <li>Non Support</li>
+            </ul>
+            <p><a href="#" button type="button" class="w-100 btn btn-lg btn-outline-primary" target="_New">Coming Soon</a></p>
+            <p><a href="#" button type="button" class="w-100 btn btn-lg btn-outline-primary" target="_New">Coming Soon</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">LMS on Examination</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">¥0</h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>試験のみ</li>
+              <li>MITライセンス</li>
+              <li>Non Help</li>
+              <li>Non Support</li>
+            </ul>
+            <p><a href="#" button type="button" class="w-100 btn btn-lg btn-outline-primary" target="_New">Coming Soon</a></p>
+            <p><a href="#" button type="button" class="w-100 btn btn-lg btn-outline-primary" target="_New">Coming Soon</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </main>
   {% include 'footer.html' %}
 </div>
