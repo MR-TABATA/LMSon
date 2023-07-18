@@ -3,7 +3,7 @@
 {% block bootstrap5_extra_head %}{% endblock %}
 {% block bootstrap5_title %}{{ SITE_NAME }} | カリキュラム{% endblock %}
 {% block content %}
-<h5 class="pb-4 mb-4 fst border-bottom">E{{ SITE_NAME }} カリキュラム</h5>
+<h5 class="pb-4 mb-4 fst border-bottom">{{ SITE_NAME }} カリキュラム</h5>
   {% for course in courses %}
     <blockquote class="blockquote">
       <p>第 {{ forloop.counter }} 章　{{ course.title }}</p>
