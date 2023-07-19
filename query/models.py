@@ -11,9 +11,12 @@ class ElmsQuery(models.Model):
 	deleted = models.DateTimeField(verbose_name='削除日時', blank=True, null=True)
 
 	def __str__(self):
-		return self.content
+		return self.content[0:50]+"..."
 
 	class Meta:
 		db_table = 'elms_query'
 		verbose_name = '問い合わせ情報'
 		verbose_name_plural = '問い合わせ情報'
+
+
+

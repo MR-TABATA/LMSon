@@ -10,6 +10,7 @@ from accounts.models import CustomUser
 from chapter.models import ElmsChapter, ElmsChapterUserShip
 from lesson.models import ElmsLesson, ElmsLessonUserShip
 from exam.models import ElmsExam, ExamUserShip
+from query.models import ElmsQuery
 from notification.models import ElmsNotification
 from course.models import ElmsCourse
 
@@ -26,6 +27,7 @@ from dashboard.resource import (
   ElmsChapterUserShipResource,
   ElmsLessonUserShipResource,
   ElmsNotificationResource,
+  ElmsQueryResource,
 )
 
 from django.contrib.auth.hashers import make_password
@@ -258,6 +260,32 @@ class ElmsNotificationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
       obj.deleted = timezone.now()
       obj.save()
 
+class ElmsQueryAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+  list_display = ('id', 'mail', )
+  list_display_links = ('mail',)
+  fieldsets = (
+    (None, {'fields': ('mail', 'content', 'created', 'modified', 'deleted', )}),
+  )
+  readonly_fields = ['mail', 'content', 'created', 'modified', 'deleted', ]
+  resource_class = ElmsQueryResource
+  formats = [base_formats.CSV]
+  formfield_overrides = {
+    models.CharField: {'widget': TextInput(attrs={'size': '80'})},
+    models.TextField: {'widget': Textarea(attrs={'rows': 50, 'cols': 80})},
+  }
+
+  def delete(self):
+    self.deleted = timezone.now()
+    self.save()
+
+  def get_queryset(self, request):
+    queryset = super().get_queryset(request)
+    return queryset.filter(deleted__isnull=True).all()
+
+  def delete_queryset(self, request, queryset):
+    for obj in queryset:
+      obj.deleted = timezone.now()
+      obj.save()
 
 
 
@@ -385,6 +413,7 @@ admin.site.register(ElmsCourse, ElmsCourseAdmin)
 admin.site.register(ElmsLesson, ElmsLessonAdmin)
 admin.site.register(ElmsExam, ElmsExamAdmin)
 admin.site.register(ElmsNotification, ElmsNotificationAdmin)
+admin.site.register(ElmsQuery, ElmsQueryAdmin)
 admin.site.register(ExamUserShip, ExamUserShipAdmin)
 admin.site.register(ElmsChapterUserShip, ElmsChapterUserShipAdmin)
 admin.site.register(ElmsLessonUserShip, ElmsLessonUserShipAdmin)
