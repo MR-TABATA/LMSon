@@ -17,7 +17,6 @@ class ElmsNotification(models.Model):
   created = models.DateTimeField(verbose_name='生成日時', auto_now_add=True)
   modified = models.DateTimeField(verbose_name='更新日時', auto_now=True)
   deleted = models.DateTimeField(verbose_name='削除日時', blank=True, null=True)
-  elms_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='notificated_user')
   history = HistoricalRecords()
 
   def __str__(self):
