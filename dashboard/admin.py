@@ -89,9 +89,9 @@ class MyUserAdmin(ImportExportModelAdmin, UserAdmin):
   resource_class = MyUserResource
   inlines = [ ExamUserShipInline, ElmsChapterUserShipInline ]
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
@@ -119,9 +119,9 @@ class ElmsCourseAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     models.TextField: {'widget': Textarea(attrs={'rows': 10, 'cols': 80})},
   }
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
@@ -151,9 +151,9 @@ class ElmsChapterAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     return obj.elms_chapter_course.title
   elms_course_title.short_description = 'コース名'
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
@@ -184,9 +184,9 @@ class ElmsExamAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     models.TextField: {'widget': Textarea(attrs={'rows': 10, 'cols': 80})},
   }
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
@@ -218,9 +218,9 @@ class ElmsLessonAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     models.TextField: {'widget': Textarea(attrs={'rows': 10, 'cols': 80})},
   }
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
@@ -247,9 +247,9 @@ class ElmsNotificationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     models.TextField: {'widget': Textarea(attrs={'rows': 50, 'cols': 80})},
   }
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
@@ -274,9 +274,9 @@ class ElmsQueryAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     models.TextField: {'widget': Textarea(attrs={'rows': 50, 'cols': 80})},
   }
 
-  def delete(self):
-    self.deleted = timezone.now()
-    self.save()
+  def delete_model(self, request, obj):
+    obj.deleted = timezone.now()
+    obj.save()
 
   def get_queryset(self, request):
     queryset = super().get_queryset(request)
