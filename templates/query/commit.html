@@ -1,0 +1,17 @@
+{% extends "base_sign.html" %}
+{% load django_bootstrap5 %}
+{% block bootstrap5_extra_head %}{% endblock %}
+{% block bootstrap5_title %}{{ SITE_NAME }} | お問い合わせ一覧{% endblock %}
+{% block content %}
+<div class="col-lg-10 mx-auto p-3 py-md-5">
+  {% include 'home_header.html' %}
+  <main>
+  <h5 class="pb-4 mb-4 fst border-bottom">お問い合わせ受付完了しました</h5>
+  <a href="{% url 'home:index' %}">トップに戻る</a>
+  </main>
+</div>
+{% endblock content %}
+{% block javascripts %}{% endblock javascripts %}
+
+
+

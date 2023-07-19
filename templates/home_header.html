@@ -5,7 +5,10 @@
   <div class="col-5">
     <ul class="nav justify-content-end h5">
       <li class="nav-item">
-        <a class="nav-link" href="https://forms.gle/KNHeV1zaMUFTo9136" class="text-decoration-none">お問い合わせ</a>
+        <a class="nav-link" href="{% url 'home:index' %}" class="text-decoration-none">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'query:index' %}" class="text-decoration-none">お問い合わせ</a>
       </li>
     </ul>
   </div>

@@ -15,6 +15,7 @@ urlpatterns = [
   path('chapter/', include('chapter.urls')),
   path('exam/', include('exam.urls')),
   path('lesson/', include('lesson.urls')),
+  path('query/', include('query.urls')),
   path('notification/', include('notification.urls')),
   path('situation/', include('situation.urls')),
   path('', include('home.urls')),

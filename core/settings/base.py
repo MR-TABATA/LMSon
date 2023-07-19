@@ -15,6 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 from django.core.management.utils import get_random_secret_key
 
+
 DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'exam.apps.ExamConfig',
     'lesson.apps.LessonConfig',
     'home.apps.HomeConfig',
+    'query.apps.QueryConfig',
     'notification.apps.NotificationConfig',
     'situation.apps.SituationConfig',
 ]
@@ -140,7 +142,7 @@ LOGIN_URL = '/accounts/signin/'
 # #Site           #
 ###################
 
-SITE_NAME="LMS on Security"
+SITE_NAME="LMS on"
 
 ###################
 # #SESSION        #
