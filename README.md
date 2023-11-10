@@ -2,10 +2,6 @@
 
  私たちのWebアプリ（LMS on, LMS on Lesson, LMS on Examination）は、無駄を省き、シンプルなつくりであることが特徴で、必要最低限の機能のみを実装しており、使いやすさと効率性を追求しています。
 
-# 公式サイト
-
-https://lmson.net/
-
 # 動作環境
 
     Python : 3.9以上
